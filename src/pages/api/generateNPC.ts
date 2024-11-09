@@ -13,10 +13,12 @@ type NPC = {
 // const classes = ['Warrior', 'Mage', 'Ranger', 'Rogue'];
 
 function generateRandomNPC(): NPC {
-  const id = Math.random().toString(36).substring(7); // Random ID
-  const name = `NPC-${id}`;
-  const race = races[Math.floor(Math.random() * races.length)];
-  const classType = classes[Math.floor(Math.random() * classes.length)];
+    const id = Math.random().toString(36).substring(7); // Random ID
+    const name = `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${
+    lastNames[Math.floor(Math.random() * lastNames.length)]
+  }`;
+    const race = races[Math.floor(Math.random() * races.length)];
+    const classType = classes[Math.floor(Math.random() * classes.length)];
 
   return { id, name, race, class: classType };
 }

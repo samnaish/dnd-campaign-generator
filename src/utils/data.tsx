@@ -52,3 +52,23 @@ export const creatures = [
   'Werewolf',
   'Vampire',
 ] as const;
+
+export const alignments = [
+  'Lawful Good', 
+  'Neutral Good', 
+  'Chaotic Good', 
+  'Lawful Neutral', 
+  'True Neutral', 
+  'Chaotic Neutral', 
+  'Lawful Evil', 
+  'Neutral Evil', 
+  'Chaotic Evil'
+] as const;
+
+export const backgrounds = [
+  'Soldier', 
+  'Acolyte', 
+  'Criminal', 
+  'Folk Hero', 
+  'Noble'
+] as const;

@@ -1,17 +1,30 @@
-import { useState, useEffect } from 'react';
-import NPCDetails from '../components/NPCDetails';
+import { useState } from 'react';
 import NPCList from '../components/NPCList';
 
-type NPC = {
-  id: string;
+type AbilityScores = {
+  strength: number;
+  dexterity: number;
+  constitution: number;
+  intelligence: number;
+  wisdom: number;
+  charisma: number;
+};
+
+type PC = {
   name: string;
   race: string;
   class: string;
+  background: string;
+  alignment: string;
+  abilities: AbilityScores;
+  hitPoints: number;
+  level: number;
+  proficiencies: string[];
 };
 
 export default function NPCEncounter() {
   const [npcCount, setNpcCount] = useState(1);
-  const [npcs, setNpcs] = useState<NPC[]>([]);
+  const [npcs, setNpcs] = useState<PC[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -19,9 +32,9 @@ export default function NPCEncounter() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/generateNPC?count=${npcCount}`);
+      const res = await fetch(`/api/generatePC?count=${npcCount}`);
       if (!res.ok) throw new Error('Failed to fetch NPCs');
-      const data: NPC[] = await res.json();
+      const data: PC[] = await res.json();
       setNpcs(data);
     } catch (err: any) {
       setError(err.message);
@@ -33,10 +46,8 @@ export default function NPCEncounter() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gray-100">
       <div className="w-full max-w-md bg-white p-6 rounded shadow">
-        <h1 className="text-2xl font-bold mb-4">Generate NPCs</h1>
-        <label className="block mb-2 text-sm">
-          Number of NPCs to Generate:
-        </label>
+        <h1 className="text-2xl font-bold mb-4">Generate D&D Player Characters</h1>
+        <label className="block mb-2 text-sm">Number of Characters to Generate:</label>
         <input
           type="number"
           value={npcCount}
@@ -49,14 +60,14 @@ export default function NPCEncounter() {
           className="bg-blue-600 text-white px-4 py-2 rounded w-full"
           disabled={loading}
         >
-          {loading ? 'Generating...' : 'Generate NPCs'}
+          {loading ? 'Generating...' : 'Generate Characters'}
         </button>
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
 
         {npcs.length > 0 && (
           <div className="mt-4">
-            <h2 className="text-xl font-bold">Generated NPCs</h2>
+            <h2 className="text-xl font-bold">Generated Characters</h2>
             <NPCList npcs={npcs} />
           </div>
         )}
