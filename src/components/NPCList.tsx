@@ -23,7 +23,7 @@ type PC = {
 export default function NPCList({ npcs }: { npcs: PC[] }) {
   return (
     <div className="space-y-4">
-      {npcs.map((npc, index) => (
+      {npcs?.map((npc, index) => (
         <div key={index} className="bg-white p-4 rounded border shadow-md">
           <h2 className="text-xl font-bold">{npc.name}</h2>
           <p><strong>Race:</strong> {npc.race}</p>
@@ -59,7 +59,7 @@ export default function NPCList({ npcs }: { npcs: PC[] }) {
 
             <h3 className="font-semibold">Proficiencies</h3>
             <ul>
-              {npc.proficiencies.map((proficiency, idx) => (
+              {npc.proficiencies?.map((proficiency, idx) => (
                 <li key={idx}>{proficiency}</li>
               ))}
             </ul>

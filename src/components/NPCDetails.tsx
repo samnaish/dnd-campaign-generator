@@ -1,8 +1,3 @@
-// type NPC = {
-//   name: string;
-//   race: string;
-//   class: string;
-// };
 
 type AbilityScores = {
   strength: number;
