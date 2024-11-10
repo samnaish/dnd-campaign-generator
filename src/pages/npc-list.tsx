@@ -1,4 +1,3 @@
-// import NPCDetails from '../components/NPCDetails';
 
 type AbilityScores = {
   strength: number;
