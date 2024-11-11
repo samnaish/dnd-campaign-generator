@@ -1,5 +1,21 @@
 import { useState } from 'react';
 import NPCList from '../components/NPCList';
+import CampaignDetails from '../components/CampaignDetails';
+
+type NPC = {
+  name: string;
+  role: string;
+  description: string;
+};
+
+type Campaign = {
+  location: string;
+  description: string;
+  theme: string;
+  npcs: NPC[];
+  quests: string[];
+  encounters: { name: string; type: string; difficulty: string }[];
+};
 
 type AbilityScores = {
   strength: number;
@@ -23,19 +39,18 @@ type PC = {
 };
 
 export default function NPCEncounter() {
-  const [npcCount, setNpcCount] = useState(1);
-  const [npcs, setNpcs] = useState<PC[]>([]);
+  const [campaign, setCampaign] = useState<Campaign | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const generateNPCs = async () => {
+  const generateCampaign = async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/generatePC?count=${npcCount}`);
-      if (!res.ok) throw new Error('Failed to fetch NPCs');
-      const data: PC[] = await res.json();
-      setNpcs(data);
+      const res = await fetch('/api/generateCampaign');
+      if (!res.ok) throw new Error("Failed to fetch campaign");
+      const data: Campaign = await res.json();
+      setCampaign(data);
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -46,29 +61,21 @@ export default function NPCEncounter() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gray-100">
       <div className="w-full max-w-md bg-white p-6 rounded shadow">
-        <h1 className="text-2xl font-bold mb-4">Generate D&D Player Characters</h1>
-        <label className="block mb-2 text-sm">Number of Characters to Generate:</label>
-        <input
-          type="number"
-          value={npcCount}
-          onChange={(e) => setNpcCount(parseInt(e.target.value))}
-          min="1"
-          className="border rounded px-2 py-1 mb-4 w-full"
-        />
+        <h1 className="text-2xl font-bold mb-4">Generate Campaign Starting Environment</h1>
+        
         <button
-          onClick={generateNPCs}
+          onClick={generateCampaign}
           className="bg-blue-600 text-white px-4 py-2 rounded w-full"
           disabled={loading}
         >
-          {loading ? 'Generating...' : 'Generate Characters'}
+          {loading ? "Generating..." : "Generate Campaign"}
         </button>
 
         {error && <p className="text-red-500 mt-4">{error}</p>}
 
-        {npcs.length > 0 && (
+        {campaign && (
           <div className="mt-4">
-            <h2 className="text-xl font-bold">Generated Characters</h2>
-            <NPCList npcs={npcs} />
+            <CampaignDetails campaign={campaign} />
           </div>
         )}
       </div>
