@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import NPCList from '../components/NPCList';
 import CampaignDetails from '../components/CampaignDetails';
 
 type NPC = {
@@ -15,27 +14,6 @@ type Campaign = {
   npcs: NPC[];
   quests: string[];
   encounters: { name: string; type: string; difficulty: string }[];
-};
-
-type AbilityScores = {
-  strength: number;
-  dexterity: number;
-  constitution: number;
-  intelligence: number;
-  wisdom: number;
-  charisma: number;
-};
-
-type PC = {
-  name: string;
-  race: string;
-  class: string;
-  background: string;
-  alignment: string;
-  abilities: AbilityScores;
-  hitPoints: number;
-  level: number;
-  proficiencies: string[];
 };
 
 export default function NPCEncounter() {
