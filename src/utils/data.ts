@@ -9,7 +9,7 @@ export const races = [
   'Gnome',
   'Half-Elf',
   'Half-Orc',
-] as const;
+]as const;
 
 // List of classes available for NPCs
 export const classes = [
@@ -23,7 +23,7 @@ export const classes = [
   'Monk',
   'Druid',
   'Warlock',
-] as const;
+]as const;
 
 // List of environments for encounters
 export const environments = [
@@ -37,7 +37,7 @@ export const environments = [
   'Urban',
   'Jungle',
   'Arctic',
-] as const;
+];
 
 // List of creatures for encounters
 export const creatures = [
@@ -51,7 +51,7 @@ export const creatures = [
   'Giant Spider',
   'Werewolf',
   'Vampire',
-] as const;
+];
 
 export const alignments = [
   'Lawful Good', 
@@ -63,7 +63,7 @@ export const alignments = [
   'Lawful Evil', 
   'Neutral Evil', 
   'Chaotic Evil'
-] as const;
+];
 
 export const backgrounds = [
   'Soldier', 
@@ -71,7 +71,7 @@ export const backgrounds = [
   'Criminal', 
   'Folk Hero', 
   'Noble'
-] as const;
+];
 
 export const locations = [
   { 
@@ -90,7 +90,7 @@ export const locations = [
     name: "Haunted Castle Ruins", 
     description: "The abandoned ruins of an old castle, rumored to be haunted." 
   },
-] as const;
+];
 
 export const themes = [
   "mysterious", 
@@ -98,7 +98,7 @@ export const themes = [
   "tense", 
   "foreboding", 
   "hopeful"
-] as const;
+];
 
 export const npcRoles = [
   "Village Elder",
@@ -106,7 +106,7 @@ export const npcRoles = [
   "Local Merchant",
   "Guard Captain",
   "Traveling Bard",
-] as const;
+];
 
 export const encounters = [
   { 
@@ -133,11 +133,11 @@ export const encounters = [
     difficulty: "easy" 
 
   },
-] as const;
+];
 
 export const quests: string[] = [
   "Investigate the strange lights in the forest.",
   "Find the missing heirloom of the village elder.",
   "Escort a merchant to the neighboring town.",
   "Deal with the bandit problem plaguing the road.",
-] as const;
+];

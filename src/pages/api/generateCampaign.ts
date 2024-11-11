@@ -1,37 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { locations, themes, npcRoles, encounters, quests } from '../../utils/data';
+import { Campaign, Encounter, NPC } from '../../utils/types';
+import { generateRandomNPC } from '../../utils/helpers';
 
-type NPC = {
-    name: string;
-    role: string;
-    description: string;
-};
-
-type Encounter = {
-    name: string;
-    type: string;
-    difficulty: string;
-};
-
-type Campaign = {
-    location: string;
-    description: string;
-    theme: string;
-    npcs: NPC[];
-    quests: string[];
-    encounters: Encounter[];
-}
 
 function generateRandomCampaign(): Campaign {
     const location = locations[Math.floor(Math.random() * locations.length)];
     const theme = themes[Math.floor(Math.random() * themes.length)];
 
   // Generate random NPCs
-    const npcs: NPC[] = Array.from({ length: 3 }, () => ({
-        name: `NPC-${Math.random().toString(36).substring(2, 7)}`,
-        role: npcRoles[Math.floor(Math.random() * npcRoles.length)],
-        description: "A character with their own motives and secrets.",
-    }));
+    const npcs: NPC[] = Array.from({ length: 3 }, generateRandomNPC)
 
   // Generate random encounters
     const encounterList: Encounter[] = Array.from({ length: 2 }, () => {
@@ -50,7 +28,7 @@ function generateRandomCampaign(): Campaign {
         quests: selectedQuests,
         encounters: encounterList,
     };
- }
+    }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "GET") {

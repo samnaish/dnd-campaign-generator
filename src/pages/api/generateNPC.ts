@@ -9,9 +9,6 @@ type NPC = {
   class: string;
 };
 
-// const races = ['Human', 'Elf', 'Dwarf', 'Orc'];
-// const classes = ['Warrior', 'Mage', 'Ranger', 'Rogue'];
-
 function generateRandomNPC(): NPC {
     const id = Math.random().toString(36).substring(7); // Random ID
     const name = `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${

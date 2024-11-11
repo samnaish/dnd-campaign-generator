@@ -24,11 +24,6 @@ type PC = {
 };
 
 
-function rollAbilityScore(): number {
-  const rolls = Array.from({ length: 4 }, () => Math.floor(Math.random() * 6) + 1);
-  rolls.sort((a, b) => a - b);
-  return rolls.slice(1).reduce((sum, roll) => sum + roll, 0);
-}
 
 function generateRandomPC(): PC {
   const name = `${firstNames[Math.floor(Math.random() * firstNames.length)]} ${
@@ -41,14 +36,7 @@ function generateRandomPC(): PC {
   const background = backgrounds[Math.floor(Math.random() * backgrounds.length)];
 
   // Roll ability scores and apply race modifiers
-  const abilities = {
-    strength: rollAbilityScore() + race.abilities.strength,
-    dexterity: rollAbilityScore() + race.abilities.dexterity,
-    constitution: rollAbilityScore() + race.abilities.constitution,
-    intelligence: rollAbilityScore() + race.abilities.intelligence,
-    wisdom: rollAbilityScore() + race.abilities.wisdom,
-    charisma: rollAbilityScore() + race.abilities.charisma,
-  };
+
 
   // Hit points calculation based on class and Constitution modifier
   const hitPoints = classType.hitDie + Math.floor((abilities.constitution - 10) / 2);

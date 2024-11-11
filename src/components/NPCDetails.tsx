@@ -1,34 +1,13 @@
+import { NPC } from "../utils/types";
 
-type AbilityScores = {
-  strength: number;
-  dexterity: number;
-  constitution: number;
-  intelligence: number;
-  wisdom: number;
-  charisma: number;
-};
 
-type PC = {
-  name: string;
-  race: string;
-  class: string;
-  background: string;
-  alignment: string;
-  abilities: AbilityScores;
-  hitPoints: number;
-  level: number;
-  proficiencies: string[];
-};
-
-export default function NPCDetails({ npc }: { npc: PC }) {
+export default function NPCDetails({ npc }: { npc: NPC }) {
   return (
     <div className="p-4 border rounded mb-4 bg-gray-100">
       <h2 className="text-xl font-bold">{npc.name}</h2>
       <p><strong>Race:</strong> {npc.race}</p>
       <p><strong>Class:</strong> {npc.class}</p>
-      <p><strong>Background:</strong> {npc.background}</p>
       <p><strong>Alignment:</strong> {npc.alignment}</p>
-      <p><strong>Level:</strong> {npc.level}</p>
       <p><strong>Hit Points:</strong> {npc.hitPoints}</p>
 
       <h3 className="mt-2 font-semibold">Ability Scores</h3>
@@ -43,9 +22,9 @@ export default function NPCDetails({ npc }: { npc: PC }) {
 
       <h3 className="mt-2 font-semibold">Proficiencies</h3>
       <ul>
-        {npc.proficiencies.map((proficiency, index) => (
+        {/* {npc.proficiencies.map((proficiency, index) => (
           <li key={index}>{proficiency}</li>
-        ))}
+        ))} */}
       </ul>
     </div>
   );
