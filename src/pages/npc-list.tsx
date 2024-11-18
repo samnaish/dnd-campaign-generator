@@ -31,10 +31,10 @@ export default function NPCList({ npcs }: { npcs: PC[] }) {
           <p><strong>Level:</strong> {npc.level}</p>
           <p><strong>Alignment:</strong> {npc.alignment}</p>
           <p><strong>Hit Points:</strong> {npc.hitPoints}</p>
-          
+
           {/* Button to toggle the detailed view */}
           <button
-            className="mt-2 bg-blue-500 text-white p-2 rounded"
+            className="mt-2 bg-blue-500  p-2 rounded"
             onClick={() => {
               const detailsSection = document.getElementById(`details-${npc.name}`);
               if (detailsSection) {

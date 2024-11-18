@@ -39,11 +39,11 @@ export default function NPCEncounter() {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gray-100">
       <div className="w-full max-w-md bg-white p-6 rounded shadow">
-        <h1 className="text-2xl font-bold mb-4">Generate Campaign Starting Environment</h1>
-        
+        <h1 className="text-black text-2xl font-bold mb-4">Generate Campaign Starting Environment</h1>
+
         <button
           onClick={generateCampaign}
-          className="bg-blue-600 text-white px-4 py-2 rounded w-full"
+          className="bg-blue-600  px-4 py-2 rounded w-full"
           disabled={loading}
         >
           {loading ? "Generating..." : "Generate Campaign"}
@@ -52,7 +52,7 @@ export default function NPCEncounter() {
         {error && <p className="text-red-500 mt-4">{error}</p>}
 
         {campaign && (
-          <div className="mt-4">
+          <div className="text-black mt-4">
             <CampaignDetails campaign={campaign} />
           </div>
         )}

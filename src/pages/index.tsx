@@ -1,12 +1,19 @@
 import Link from 'next/link';
+import Navbar from '../components/Navbar';
+import HeroSelection from '../components/HeroSelection';
+import Features from '../components/Features';
+import CallToAction from '../components/CallToAction';
+import Footer from '../components/Footer';
+
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <h1 className="text-4xl font-bold mb-4">D&D Campaign</h1>
-      <Link href="/npc-encounter" className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
-          Go to NPC Encounter
-      </Link>
+    <div className="min-h-screen bg-gray-100">
+      <Navbar />
+      <HeroSelection />
+      <Features />
+      <CallToAction />
+      <Footer />
     </div>
   );
 }
